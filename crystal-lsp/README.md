@@ -34,8 +34,8 @@ Build and install [crystal_lsp](https://github.com/skuznetsov/crystal_lsp):
 ```bash
 git clone https://github.com/skuznetsov/crystal_lsp
 cd crystal_lsp
-shards build --release
-cp bin/crystal_lsp ~/.local/bin/
+./build_lsp.sh
+ln -s "$(pwd)/bin/crystal_v2_lsp" ~/.local/bin/crystal_lsp
 ```
 
 Ensure `~/.local/bin` is in your PATH.
