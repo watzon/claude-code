@@ -12,6 +12,11 @@
       "name": "crystal-lsp",
       "source": "./crystal-lsp",
       "description": "Crystal language server support"
+    },
+    {
+      "name": "ameba-ls",
+      "source": "./ameba-ls",
+      "description": "Ameba linting language server for Crystal"
     }
   ]
 }

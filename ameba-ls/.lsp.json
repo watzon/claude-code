@@ -1,0 +1,13 @@
+{
+  "ameba": {
+    "command": "ameba-ls",
+    "args": [],
+    "extensionToLanguage": {
+      ".cr": "crystal"
+    },
+    "transport": "stdio",
+    "env": {},
+    "initializationOptions": {},
+    "settings": {}
+  }
+}

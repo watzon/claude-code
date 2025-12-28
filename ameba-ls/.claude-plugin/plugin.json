@@ -1,0 +1,10 @@
+{
+  "name": "ameba-ls",
+  "description": "Ameba linting language server for Crystal",
+  "version": "1.0.0",
+  "author": {
+    "name": "Chris Watson",
+    "email": "cawatson1993@gmail.com",
+    "url": "https://watzon.tech"
+  }
+}
