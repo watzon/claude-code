@@ -1,0 +1,17 @@
+{
+  "name": "watzon-marketplace",
+  "owner": {
+    "name": "Chris Watson",
+    "email": "cawatson1993@gmail.com",
+    "url": "https://watzon.tech"
+  },
+  "description": "Plugins related to Crystal and other things no one else wants to write",
+  "homepage": "https://github.com/watzon/claude-code",
+  "plugins": [
+    {
+      "name": "crystal-lsp",
+      "source": "./crystal-lsp",
+      "description": "Crystal language server support"
+    }
+  ]
+}

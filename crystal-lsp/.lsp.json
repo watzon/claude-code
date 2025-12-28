@@ -1,0 +1,16 @@
+{
+  "crystal": {
+    "command": "crystal_lsp",
+    "args": [],
+    "extensionToLanguage": {
+      ".cr": "crystal",
+      ".ecr": "crystal"
+    },
+    "transport": "stdio",
+    "env": {
+      "CRYSTALV2_LSP_ENABLE_SEMANTIC_DIAGNOSTICS": "1"
+    },
+    "initializationOptions": {},
+    "settings": {}
+  }
+}

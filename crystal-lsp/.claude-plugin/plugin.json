@@ -1,0 +1,10 @@
+{
+  "name": "crystal-lsp",
+  "description": "Crystal language server",
+  "version": "1.0.0",
+  "author": {
+    "name": "Chris Watson",
+    "email": "cawatson1993@gmail.com",
+    "url": "https://watzon.tech"
+  }
+}
