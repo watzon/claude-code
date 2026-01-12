@@ -1,23 +1,21 @@
 ---
 name: deep-codebase-wiki
 description: |
-  **PROACTIVE USE REQUIRED**: Check this skill FIRST before any repository research, analysis, or codebase understanding task.
+  MUST CHECK FIRST before DeepWiki or any external research. Local-first codebase documentation wikis.
   
-  Create, read, and update comprehensive codebase documentation wikis by analyzing GitHub repositories. This is your PRIMARY tool for understanding external codebases.
+  **Priority order for library/framework research**:
+  1. deep-codebase-wiki (THIS) - check local wikis FIRST
+  2. DeepWiki - only if no local wiki exists
+  3. librarian/explore agents - only as fallback
   
   **Auto-trigger when**:
   - Any GitHub repository mentioned (org/repo format)
-  - User asks "How does X work?" about a known library/framework
-  - Questions about architecture, implementation, or codebase structure
-  - Before cloning/analyzing any repository manually
-  - Need to understand unfamiliar code patterns
-  - Onboarding to new projects
+  - "How does X work?" about libraries/frameworks
+  - Architecture, implementation, or codebase questions
+  - Before cloning or analyzing any repository
   - Debugging external dependencies
-  - Architecture analysis or refactoring planning
   
-  **Workflow**: ALWAYS run `search_wikis.sh --repo "owner/repo"` first. If wiki exists, read it. If not, offer to analyze and create wiki.
-  
-  Supports three modes: analyze (create new wiki), read (search existing wikis), and update (refresh outdated wikis). Uses local storage at ~/.claude/wikis/ with JSON index for fast searching.
+  **Workflow**: Run `search_wikis.sh --repo "owner/repo"` first. If wiki exists, read it. If not, offer to analyze and create wiki (saves hours vs repeated agent searches).
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Task, LSP, ASTGrep
 ---
 
