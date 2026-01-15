@@ -1,0 +1,150 @@
+---
+name: crystal-lang
+description: Use this skill when working with the Crystal programming language. Crystal is a statically-typed, compiled language with Ruby-like syntax. It features type inference, null safety, macros, and compiles to efficient native code. Use for understanding Crystal's standard library, syntax, semantics, concurrency model, and FFI bindings.
+---
+
+# Crystal-Lang Skill
+
+Use this skill when working with the crystal programming language. crystal is a statically-typed, compiled language with ruby-like syntax. it features type inference, null safety, macros, and compiles to efficient native code. use for understanding crystal's standard library, syntax, semantics, concurrency model, and ffi bindings., generated from official documentation.
+
+## When to Use This Skill
+
+This skill should be triggered when:
+- Working with crystal-lang
+- Asking about crystal-lang features or APIs
+- Implementing crystal-lang solutions
+- Debugging crystal-lang code
+- Learning crystal-lang best practices
+
+## Quick Reference
+
+### Common Patterns
+
+**Pattern 1:** def run(filename, *args) : MacroId # Compiles and execute a Crystal program and returns its output as a MacroId
+
+```
+MacroId
+```
+
+**Pattern 2:** A simple example:
+
+```
+# read.cr
+puts File.read(ARGV[0])
+```
+
+**Pattern 3:** def skip_file : Nop # Skips the rest of the file from which it is executed
+
+```
+{% if flag?(...) %} ... {% end %}
+```
+
+**Pattern 4:** def add_options(options : OpenSSL::SSL::Options) # Adds options to the TLS context
+
+```
+context.add_options(
+  OpenSSL::SSL::Options::ALL |       # various workarounds
+  OpenSSL::SSL::Options::NO_SSL_V2 | # disable overly deprecated SSLv2
+  OpenSSL::SSL::Options::NO_SSL_V3   # disable deprecated SSLv3
+)
+```
+
+**Pattern 5:** def alpn_protocol=(protocol : String) # Specifies an ALPN protocol to negotiate with the remote endpoint
+
+```
+context.alpn_protocol = "h2"
+```
+
+**Pattern 6:** Crystal GitHub Index Specification Specification About this guide The Program Comments Documenting code Literals Literals Nil Bool Integers Floats ...
+
+```
+lib
+```
+
+**Pattern 7:** Example:
+
+```
+require "io/hexdump"
+socket = IO::Memory.new("abc")
+io = IO::Hexdump.new(socket, output: STDERR, read: true)
+```
+
+**Pattern 8:** This type can also be expressed as Int32[3] (only in type grammar)
+
+```
+Int32[3]
+```
+
+### Example Code Patterns
+
+**Example 1** (javascript):
+```javascript
+1 + 2 # => 3
+```
+
+**Example 2** (json):
+```json
+{{ `echo hi` }} # => "hi\n"
+```
+
+**Example 3** (json):
+```json
+{{ alignof(Int32) }} # => 4
+{{ alignof(Void*) }} # usually 4 or 8
+```
+
+**Example 4** (javascript):
+```javascript
+Union(Int32 | String)      # => (Int32 | String)
+Union(Int32)               # => Int32
+Union(Int32, Int32, Int32) # => Int32
+```
+
+## Reference Files
+
+This skill includes comprehensive documentation in `references/`:
+
+- **getting_started.md** - Getting Started documentation
+- **standard_library.md** - Standard Library documentation
+- **syntax_and_semantics.md** - Syntax And Semantics documentation
+
+Use `view` to read specific reference files when detailed information is needed.
+
+## Working with This Skill
+
+### For Beginners
+Start with the getting_started or tutorials reference files for foundational concepts.
+
+### For Specific Features
+Use the appropriate category reference file (api, guides, etc.) for detailed information.
+
+### For Code Examples
+The quick reference section above contains common patterns extracted from the official docs.
+
+## Resources
+
+### references/
+Organized documentation extracted from official sources. These files contain:
+- Detailed explanations
+- Code examples with language annotations
+- Links to original documentation
+- Table of contents for quick navigation
+
+### scripts/
+Add helper scripts here for common automation tasks.
+
+### assets/
+Add templates, boilerplate, or example projects here.
+
+## Notes
+
+- This skill was automatically generated from official documentation
+- Reference files preserve the structure and examples from source docs
+- Code examples include language detection for better syntax highlighting
+- Quick reference patterns are extracted from common usage examples in the docs
+
+## Updating
+
+To refresh this skill with updated documentation:
+1. Re-run the scraper with the same configuration
+2. The skill will be rebuilt with the latest information
