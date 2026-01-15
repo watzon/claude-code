@@ -1,0 +1,142 @@
+---
+name: athena-framework
+description: Use this skill when working with Athena Framework for Crystal. Athena is a modular ecosystem of independent, reusable components including: Framework (ATH) for web apps, DependencyInjection (ADI) for IoC containers, Routing (ART) for HTTP routing, Serializer (ASR) for object serialization, Validator (AVD) for validation, Console (ACON) for CLI tools, EventDispatcher (AED) for event-driven architecture, and more. Use for building Crystal web applications, REST APIs, CLI tools, or integrating individual components.
+---
+
+# Athena-Framework Skill
+
+Use this skill when working with athena framework for crystal. athena is a modular ecosystem of independent, reusable components including: framework (ath) for web apps, dependencyinjection (adi) for ioc containers, routing (art) for http routing, serializer (asr) for object serialization, validator (avd) for validation, console (acon) for cli tools, eventdispatcher (aed) for event-driven architecture, and more. use for building crystal web applications, rest apis, cli tools, or integrating individual components., generated from official documentation.
+
+## When to Use This Skill
+
+This skill should be triggered when:
+- Working with athena-framework
+- Asking about athena-framework features or APIs
+- Implementing athena-framework solutions
+- Debugging athena-framework code
+- Learning athena-framework best practices
+
+## Quick Reference
+
+### Common Patterns
+
+**Pattern 1:** Event Dispatcher GitHub Introduction Back to Manual API API Aliases Top Level Annotations Annotations AsEventListener Callable Callable Event Event...
+
+```
+Athena::EventDispatcher::Event
+```
+
+**Pattern 2:** Extension of ACTR::EventDispatcher::Event to add additional functionality
+
+```
+AED::GenericEvent
+```
+
+**Pattern 3:** Validator GitHub Introduction Back to Manual API API Aliases Top Level Constraint Constraint Table of contents Usage Arguments Default Argument Mes...
+
+```
+Athena::Validator::Constraint
+```
+
+**Pattern 4:** Athena::Validator validates values/objects against a set of constraints, i
+
+```
+Athena::Validator
+```
+
+**Pattern 5:** Routing GitHub Introduction Back to Manual API API Aliases Top Level Annotations Annotations Delete Get Head Link Patch Post Put Route Unlink Compi...
+
+```
+Athena::Routing::Route
+```
+
+**Pattern 6:** Provides an object-oriented way to represent an HTTP route, including the path, methods, schemes, host, and/or conditions required for it to match
+
+```
+ART::Route
+```
+
+**Pattern 7:** By default, all parameters are required, meaning given the path /blog/{page}, /blog/10 would match but /blog would NOT match
+
+```
+/blog/{page}
+```
+
+**Pattern 8:** Serializer GitHub Introduction Back to Manual API API Aliases Top Level Annotations Annotations Accessor AccessorOrder Discriminator Exclude Exclus...
+
+```
+Athena::Serializer::Annotations::Expose
+```
+
+### Example Code Patterns
+
+**Example 1** (julia):
+```julia
+route = ART::Route.new "/contact"
+route.condition do |context, request|
+  request.headers["user-agent"].includes? "Firefox"
+end
+```
+
+**Example 2** (php):
+```php
+ASPEC::Methods.assert_compile_time_error "can't instantiate abstract class Foo", <<-CR
+  abstract class Foo; end
+  Foo.new
+CR
+```
+
+**Example 3** (r):
+```r
+ASPEC::Methods.assert_compiles <<-CR
+  raise "Still passes"
+CR
+```
+
+## Reference Files
+
+This skill includes comprehensive documentation in `references/`:
+
+- **framework.md** - Framework documentation
+- **getting_started.md** - Getting Started documentation
+
+Use `view` to read specific reference files when detailed information is needed.
+
+## Working with This Skill
+
+### For Beginners
+Start with the getting_started or tutorials reference files for foundational concepts.
+
+### For Specific Features
+Use the appropriate category reference file (api, guides, etc.) for detailed information.
+
+### For Code Examples
+The quick reference section above contains common patterns extracted from the official docs.
+
+## Resources
+
+### references/
+Organized documentation extracted from official sources. These files contain:
+- Detailed explanations
+- Code examples with language annotations
+- Links to original documentation
+- Table of contents for quick navigation
+
+### scripts/
+Add helper scripts here for common automation tasks.
+
+### assets/
+Add templates, boilerplate, or example projects here.
+
+## Notes
+
+- This skill was automatically generated from official documentation
+- Reference files preserve the structure and examples from source docs
+- Code examples include language detection for better syntax highlighting
+- Quick reference patterns are extracted from common usage examples in the docs
+
+## Updating
+
+To refresh this skill with updated documentation:
+1. Re-run the scraper with the same configuration
+2. The skill will be rebuilt with the latest information
