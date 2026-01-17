@@ -1,0 +1,298 @@
+# Wrangler Configuration Template
+# Complete reference for Cloudflare Workers/Pages configuration
+#
+# Copy relevant sections to your project's wrangler.toml
+# Documentation: https://developers.cloudflare.com/workers/wrangler/configuration/
+
+# Basic Worker Configuration
+name = "my-worker"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+
+# Account ID (required for deployment)
+# Get from: wrangler whoami
+account_id = ""
+
+# Worker Type
+# "webpack" | "javascript" | "rust"
+# type = "javascript"
+
+# Build Configuration
+[build]
+command = "npm run build"
+# cwd = "./"
+# watch_dirs = ["src"]
+
+# KV Namespaces
+# Create with: wrangler kv namespace create MY_KV
+[[kv_namespaces]]
+binding = "MY_KV"
+id = ""
+# preview_id = ""  # For wrangler dev
+
+# Example: Multiple KV namespaces
+# [[kv_namespaces]]
+# binding = "SESSIONS"
+# id = ""
+
+# R2 Buckets
+# Create with: wrangler r2 bucket create my-bucket
+[[r2_buckets]]
+binding = "MY_BUCKET"
+bucket_name = "my-bucket"
+# preview_bucket_name = "my-bucket-preview"  # For wrangler dev
+
+# Example: Multiple R2 buckets
+# [[r2_buckets]]
+# binding = "ASSETS"
+# bucket_name = "static-assets"
+
+# D1 Databases
+# Create with: wrangler d1 create my-database
+[[d1_databases]]
+binding = "DB"
+database_name = "my-database"
+database_id = ""
+# preview_database_id = ""  # For wrangler dev
+
+# Example: Multiple D1 databases
+# [[d1_databases]]
+# binding = "ANALYTICS_DB"
+# database_name = "analytics"
+# database_id = ""
+
+# Queues
+# Create with: wrangler queues create my-queue
+[[queues.producers]]
+binding = "MY_QUEUE"
+queue = "my-queue"
+
+[[queues.consumers]]
+queue = "my-queue"
+# max_batch_size = 10
+# max_batch_timeout = 30
+# max_retries = 3
+# dead_letter_queue = "my-dlq"
+
+# Durable Objects
+[[durable_objects.bindings]]
+name = "MY_DURABLE_OBJECT"
+class_name = "MyDurableObject"
+script_name = "my-worker"
+
+# Migrations for Durable Objects
+[[migrations]]
+tag = "v1"
+new_classes = ["MyDurableObject"]
+
+# [[migrations]]
+# tag = "v2"
+# renamed_classes = [{from = "OldName", to = "NewName"}]
+# deleted_classes = ["DeprecatedClass"]
+
+# Workers AI
+[ai]
+binding = "AI"
+
+# Vectorize (Vector Database)
+[[vectorize]]
+binding = "VECTORIZE"
+index_name = "my-index"
+
+# Hyperdrive (Database Acceleration)
+[[hyperdrive]]
+binding = "HYPERDRIVE"
+id = ""
+
+# Service Bindings (call other Workers)
+[[services]]
+binding = "OTHER_WORKER"
+service = "other-worker-name"
+# environment = "production"
+
+# Analytics Engine
+[[analytics_engine_datasets]]
+binding = "ANALYTICS"
+
+# Browser Rendering
+[browser]
+binding = "BROWSER"
+
+# mtLS Certificates
+[[mtls_certificates]]
+binding = "MTLS_CERT"
+certificate_id = ""
+
+# Environment Variables (non-secret)
+[vars]
+ENVIRONMENT = "production"
+API_URL = "https://api.example.com"
+DEBUG = "false"
+
+# Routes (custom domains)
+routes = [
+  { pattern = "example.com/*", zone_name = "example.com" },
+  { pattern = "api.example.com/*", zone_name = "example.com" }
+]
+
+# Alternative: Single route
+# route = "example.com/*"
+
+# Workers Site (static assets)
+# [site]
+# bucket = "./public"
+# include = ["*.html", "*.css", "*.js"]
+# exclude = ["*.map"]
+
+# Triggers (cron schedules)
+[triggers]
+crons = [
+  "0 0 * * *",      # Daily at midnight
+  "*/15 * * * *"    # Every 15 minutes
+]
+
+# Compatibility Flags
+compatibility_flags = [
+  # "nodejs_compat",
+  # "streams_enable_constructors"
+]
+
+# Limits
+[limits]
+# cpu_ms = 50  # CPU time limit (ms)
+
+# Logpush
+[logpush]
+enabled = true
+
+# Observability
+[observability]
+enabled = true
+# head_sampling_rate = 1.0
+
+# ===================================
+# Multi-Environment Configuration
+# ===================================
+
+# Staging Environment
+[env.staging]
+name = "my-worker-staging"
+# account_id = ""  # Different account for staging
+vars = { ENVIRONMENT = "staging", API_URL = "https://staging-api.example.com" }
+routes = [
+  { pattern = "staging.example.com/*", zone_name = "example.com" }
+]
+
+[[env.staging.kv_namespaces]]
+binding = "MY_KV"
+id = ""
+
+[[env.staging.d1_databases]]
+binding = "DB"
+database_name = "my-database-staging"
+database_id = ""
+
+# Production Environment
+[env.production]
+name = "my-worker-production"
+vars = { ENVIRONMENT = "production", API_URL = "https://api.example.com" }
+routes = [
+  { pattern = "example.com/*", zone_name = "example.com" }
+]
+
+[[env.production.kv_namespaces]]
+binding = "MY_KV"
+id = ""
+
+[[env.production.d1_databases]]
+binding = "DB"
+database_name = "my-database-production"
+database_id = ""
+
+# ===================================
+# Pages Configuration
+# ===================================
+
+# For Cloudflare Pages projects, use a minimal wrangler.toml:
+# name = "my-pages-project"
+# pages_build_output_dir = "./dist"
+#
+# [env.production]
+# vars = { ENVIRONMENT = "production" }
+#
+# [env.preview]
+# vars = { ENVIRONMENT = "preview" }
+
+# ===================================
+# Common Patterns
+# ===================================
+
+# Pattern 1: API Worker with Database
+# - D1 for relational data
+# - KV for caching
+# - Secrets for API keys (use: wrangler secret put API_KEY)
+#
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "api-db"
+# database_id = ""
+#
+# [[kv_namespaces]]
+# binding = "CACHE"
+# id = ""
+
+# Pattern 2: Static Site with Edge Functions
+# [site]
+# bucket = "./dist"
+#
+# routes = [{ pattern = "example.com/*", zone_name = "example.com" }]
+
+# Pattern 3: Background Job Processor
+# [[queues.consumers]]
+# queue = "jobs"
+# max_batch_size = 100
+#
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "jobs-db"
+# database_id = ""
+
+# Pattern 4: AI-Powered Worker
+# [ai]
+# binding = "AI"
+#
+# [[vectorize]]
+# binding = "VECTORIZE"
+# index_name = "embeddings"
+
+# Pattern 5: Multi-Tenant SaaS
+# [vars]
+# TENANT_ISOLATION = "true"
+#
+# [[kv_namespaces]]
+# binding = "TENANT_DATA"
+# id = ""
+
+# ===================================
+# Deployment Commands
+# ===================================
+#
+# Deploy to production:
+#   wrangler deploy
+#
+# Deploy to staging:
+#   wrangler deploy --env staging
+#
+# Deploy to specific environment:
+#   wrangler deploy --env production
+#
+# Dry run (validate without deploying):
+#   wrangler deploy --dry-run
+#
+# Local development:
+#   wrangler dev
+#   wrangler dev --env staging
+#   wrangler dev --remote  # Use remote bindings
+#
+# Generate TypeScript types:
+#   wrangler types

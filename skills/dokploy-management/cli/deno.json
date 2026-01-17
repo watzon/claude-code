@@ -1,0 +1,24 @@
+{
+  "name": "@watzon/dokploy-cli",
+  "version": "0.1.0",
+  "exports": "./mod.ts",
+  "tasks": {
+    "dev": "deno run --allow-all mod.ts",
+    "compile": "deno compile --allow-net --allow-read --allow-write --allow-env --output dokploy mod.ts",
+    "compile:all": "deno task compile:linux && deno task compile:macos && deno task compile:windows",
+    "compile:linux": "deno compile --allow-net --allow-read --allow-write --allow-env --target x86_64-unknown-linux-gnu --output dist/dokploy-linux mod.ts",
+    "compile:macos": "deno compile --allow-net --allow-read --allow-write --allow-env --target x86_64-apple-darwin --output dist/dokploy-macos mod.ts",
+    "compile:macos-arm": "deno compile --allow-net --allow-read --allow-write --allow-env --target aarch64-apple-darwin --output dist/dokploy-macos-arm mod.ts",
+    "compile:windows": "deno compile --allow-net --allow-read --allow-write --allow-env --target x86_64-pc-windows-msvc --output dist/dokploy.exe mod.ts",
+    "generate-types": "deno run --allow-read --allow-write scripts/generate-types.ts"
+  },
+  "imports": {
+    "@std/cli": "jsr:@std/cli@^1.0.9",
+    "@std/fmt": "jsr:@std/fmt@^1.0.5",
+    "@std/path": "jsr:@std/path@^1.1.4",
+    "@std/fs": "jsr:@std/fs@^1.0.21"
+  },
+  "compilerOptions": {
+    "strict": true
+  }
+}

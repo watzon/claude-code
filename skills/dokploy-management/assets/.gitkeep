@@ -1,0 +1,8 @@
+# Assets Directory
+
+Place static resources here:
+- Templates (HTML, DOCX, PPTX)
+- Images and icons
+- Sample files for testing
+
+These are NOT loaded into context, but copied/used in output.

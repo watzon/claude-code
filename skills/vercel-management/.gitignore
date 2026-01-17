@@ -1,0 +1,16 @@
+# Backup files
+backups/
+
+# Environment files
+.env*
+!.env.example
+
+# Vercel
+.vercel
+
+# Deployment artifacts
+deployment-url.txt
+
+# Temporary files
+*.tmp
+*.sorted

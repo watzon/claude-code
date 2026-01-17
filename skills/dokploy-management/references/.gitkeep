@@ -1,0 +1,11 @@
+# References Directory
+
+Place detailed documentation here that would bloat SKILL.md.
+
+Examples:
+- API documentation
+- Schema definitions  
+- Extended guides
+
+Remember to link these from SKILL.md:
+  See [references/api.md](references/api.md) for details.
